@@ -58,7 +58,11 @@
 			"iterator": "cpp",
 			"numeric": "cpp",
 			"random": "cpp",
-			"numbers": "cpp"
+			"numbers": "cpp",
+			"codecvt": "cpp",
+			"ctime": "cpp",
+			"ratio": "cpp",
+			"iomanip": "cpp"
 		},
 		"git.autoRepositoryDetection": false,
 		"git.enabled": false

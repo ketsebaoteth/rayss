@@ -7,7 +7,8 @@
 class elementtree
 {
 public:
-    std::vector<std::unique_ptr<Element>> elements;
+    std::vector<Element> elements;
     Font defaultFont = GetFontDefault();
     void render();
+    void renderSpecficElement(Element *element);
 };

@@ -2,6 +2,7 @@
 #include "window.h"
 #include "button.h"
 #include "elementtree.h"
+#include "defautls.h"
 
 Font font;
 elementtree tree;
@@ -11,43 +12,55 @@ void mainloop()
 {
     tree.render();
 }
-void sayhi(void *btn)
+void onHov(Element *element)
 {
-    std::cout << "Hi" << std::endl;
+    element->style.backgroundColor = {38, 38, 38, 190};
 }
-void btnhov(void *btn)
+void onHovOut(Element *element)
 {
-    // change btn color
-    auto b = (button *)btn;
-    b->backgroundColor = {232, 232, 232, 255};
-    b->scale = 1.3f;
+    element->style.backgroundColor = {61, 61, 61, 0};
 }
-void btnhovout(void *btn)
+void onclk(Element *element)
 {
-    // change btn color
-    auto b = (button *)btn;
-    b->backgroundColor = {227, 227, 227, 255};
-    b->scale = 1.0f;
+    std::cout << element->style.text << "clicked" << std::endl;
 }
+
 int main()
 {
-    mywin.bgColor = {255, 255, 255, 255};
+    mywin.bgColor = {31, 31, 31, 255};
     createWindow(&mywin);
 
     font = LoadFont("fonts/Roboto/Roboto-Regular.ttf");
     tree.defaultFont = font;
 
-    // Create a button and add it to the element tree
-    auto btn = std::make_unique<button>();
-    btn->text = "Click me!";
-    btn->width = 100;
-    btn->height = 23;
-    btn->onClick = sayhi;
-    btn->onHover = btnhov;
-    btn->onHoverOut = btnhovout;
-    btn->display = "block";
+    Element sc;
+    sc.type = SCROLLVIEW;
+    sc.style = defaultScrollarea;
+    sc.style.flexdirection = "col";
+    sc.style.width = 300;
+    sc.style.height = 400;
+    sc.style.backgroundColor = {20, 20, 20, 255};
+    sc.style.borderColor = {61, 61, 61, 180};
+    sc.style.borderRadius = 0.07f;
+    sc.style.borderWidth = 0.2f;
+    sc.style.gap = 5;
 
-    tree.elements.push_back(std::move(btn));
+    for (int i = 0; i < 15; i++)
+    {
+        Element btn;
+        btn.type = BUTTON;
+        btn.style = defaultButton;
+        btn.style.text = "Button" + std::to_string(i);
+        btn.style.backgroundColor = {255, 255, 255, 0};
+        btn.style.borderColor = {61, 61, 61, 120};
+        btn.style.onHover = onHov;
+        btn.style.onHoverOut = onHovOut;
+        btn.style.onClick = onclk;
+        btn.style.color = {255, 255, 255, 255};
+        btn.style.borderWidth = 0.3f;
+        sc.style.children.push_back(btn);
+    };
+    tree.elements.push_back(sc);
 
     windowLoopFunction(mainloop, &mywin);
 
