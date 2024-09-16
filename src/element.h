@@ -31,6 +31,10 @@ struct stylesheet
     std::vector<int> scrollBarColor = {111, 112, 112, 255};
     std::vector<int> scrollBarThubBgColor = {111, 112, 112, 255};
     float scrollBarWidth = 10.0;
+    float scrollDistance = 0.0f;
+    float scrollSpeed = 20.0f;
+    bool showScrollBar = true;
+    bool autoScroll = true;
     float borderRadius = 0.3f;
     bool isPressed = false;
     bool isHover = false;

@@ -41,9 +41,11 @@ int main()
     sc.style.height = 400;
     sc.style.backgroundColor = {20, 20, 20, 255};
     sc.style.borderColor = {61, 61, 61, 180};
-    sc.style.borderRadius = 0.07f;
+    sc.style.borderRadius = 0.00f;
     sc.style.borderWidth = 0.2f;
     sc.style.gap = 5;
+    sc.style.scrollBarColor = {61, 61, 61, 0};
+    sc.style.scrollBarThubBgColor = {61, 61, 61, 255};
 
     for (int i = 0; i < 15; i++)
     {

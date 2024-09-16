@@ -62,6 +62,7 @@ stylesheet defaultScrollarea = {
     .scrollBarColor = {111, 112, 112, 255},
     .scrollBarThubBgColor = {0, 0, 112, 255},
     .scrollBarWidth = 10.0f,
+    .scrollDistance = 0.0f,
     .borderRadius = 0.2f, // Rounded corners
     .isPressed = false,
     .isHover = false,
